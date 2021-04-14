@@ -50,12 +50,16 @@ Ext.define('HeaderLeftRight.view.MyPanel', {
             xtype: 'toolbar',
             dock: 'top',
             height: 66,
+            style: {
+                'background-color': '#e4e4e4'
+            },
             items: [
                 {
                     xtype: 'button',
                     height: 40,
                     id: 'menuBtn',
                     minWidth: 40,
+                    iconCls: 'fas fa-bars',
                     text: '',
                     listeners: {
                         click: 'onMenuBtnClick'
@@ -63,7 +67,7 @@ Ext.define('HeaderLeftRight.view.MyPanel', {
                 },
                 {
                     xtype: 'textfield',
-                    height: 60,
+                    height: 54,
                     id: 'currentSymbolText',
                     style: {
                         'font-size': '18px !important'
@@ -79,7 +83,7 @@ Ext.define('HeaderLeftRight.view.MyPanel', {
                     height: 40,
                     id: 'refreshBtn',
                     minWidth: 40,
-                    iconCls: 'fa-fw select-all fas',
+                    iconCls: 'fas fa-redo-alt',
                     text: '',
                     listeners: {
                         click: 'onRefreshBtnClick'

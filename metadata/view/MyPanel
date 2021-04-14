@@ -43,11 +43,15 @@
             "codeClass": null,
             "userConfig": {
                 "dock": "top",
-                "height": 66
+                "height": 66,
+                "style": [
+                    "{\"background-color\": \"#e4e4e4\"}"
+                ]
             },
             "configAlternates": {
                 "dock": "string",
-                "height": "auto"
+                "height": "auto",
+                "style": "object"
             },
             "name": "MyToolbar",
             "designerId": "b7998b89-e078-4654-b436-b8bdad666721",
@@ -61,6 +65,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "height": 40,
+                        "iconCls": "fas fa-bars",
                         "id": "menuBtn",
                         "layout|flex": null,
                         "minWidth": 40,
@@ -71,7 +76,8 @@
                         "layout|flex": "number",
                         "minWidth": "number",
                         "text": "string",
-                        "height": "auto"
+                        "height": "auto",
+                        "iconCls": "string"
                     },
                     "name": "MyButton",
                     "designerId": "5f6b40c8-cbaf-4cee-aa55-77da2ea64675",
@@ -112,7 +118,7 @@
                     "userConfig": {
                         "editable": false,
                         "fieldLabel": "",
-                        "height": 60,
+                        "height": 54,
                         "id": "currentSymbolText",
                         "layout|flex": null,
                         "readOnly": true,
@@ -148,7 +154,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "height": 40,
-                        "iconCls": "fa-fw select-all fas",
+                        "iconCls": "fas fa-redo-alt",
                         "id": "refreshBtn",
                         "layout|flex": null,
                         "minWidth": 40,
