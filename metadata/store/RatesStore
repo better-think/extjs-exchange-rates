@@ -1,0 +1,87 @@
+{
+    "type": "jsonpstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "RatesStore",
+        "model": "RateModel",
+        "storeId": "RatesStore"
+    },
+    "configAlternates": {
+        "designer|userClassName": "string",
+        "model": "model",
+        "storeId": "string"
+    },
+    "name": "MyJsonPStore",
+    "designerId": "2134005f-5f63-49d4-8a8c-24a60b5439c7",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.JsonP",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "extraParams": [
+                    "{\"access_key\": \"fb6e8c73be27e96f7392a4db33fa5fc5\", \"base\": \"USD\"}"
+                ],
+                "url": "https://api.exchangeratesapi.io/v1/latest"
+            },
+            "configAlternates": {
+                "extraParams": "object",
+                "url": "string"
+            },
+            "name": "MyJsonPProxy1",
+            "designerId": "8541587c-1a5e-4c83-b2c7-f7a8519ee409",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyJsonReader1",
+                    "designerId": "29b27645-9dba-487e-ade3-008f920b55ac",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "data"
+                                ],
+                                "fn": "transform",
+                                "implHandler": [
+                                    "var rates = data.rates;",
+                                    "data = Object.keys(rates).map((symbol) => {",
+                                    "\treturn {",
+                                    "\t\tsymbol: symbol,",
+                                    "\t\trate: rates[symbol]",
+                                    "\t};",
+                                    "});",
+                                    "return data;"
+                                ]
+                            },
+                            "configAlternates": {
+                                "designer|params": "typedarray",
+                                "fn": "string",
+                                "implHandler": "code"
+                            },
+                            "name": "transform",
+                            "designerId": "5a057c9f-2bb7-42a5-a608-40147be16547"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

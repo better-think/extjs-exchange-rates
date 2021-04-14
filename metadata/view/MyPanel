@@ -1,0 +1,445 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyBorder": false,
+        "border": false,
+        "designer|initialView": true,
+        "designer|userAlias": "mypanel",
+        "designer|userClassName": "MyPanel",
+        "height": 600,
+        "style": [
+            "{margin: \"auto\"}"
+        ],
+        "title": "",
+        "width": "800px"
+    },
+    "configAlternates": {
+        "style": "object",
+        "designer|initialView": "boolean",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "title": "string",
+        "width": "auto",
+        "bodyBorder": "boolean",
+        "border": "boolean"
+    },
+    "name": "MyPanel",
+    "designerId": "2ecd2526-8416-43d4-a717-2eb111850243",
+    "viewControllerInstanceId": "491ac025-81c2-479a-89de-7885ed13be2e",
+    "viewModelInstanceId": "e6f9f3e6-438b-4a66-8682-60c7ed51814f",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "height": 66
+            },
+            "configAlternates": {
+                "dock": "string",
+                "height": "auto"
+            },
+            "name": "MyToolbar",
+            "designerId": "b7998b89-e078-4654-b436-b8bdad666721",
+            "cn": [
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 40,
+                        "id": "menuBtn",
+                        "layout|flex": null,
+                        "minWidth": 40,
+                        "text": ""
+                    },
+                    "configAlternates": {
+                        "id": "string",
+                        "layout|flex": "number",
+                        "minWidth": "number",
+                        "text": "string",
+                        "height": "auto"
+                    },
+                    "name": "MyButton",
+                    "designerId": "5f6b40c8-cbaf-4cee-aa55-77da2ea64675",
+                    "cn": [
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onMenuBtnClick",
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onMenuBtnClick",
+                            "designerId": "4b08cd73-8dc1-4ff6-a8a5-d3556d94ed19"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.field.Tag",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "",
+                        "height": 60,
+                        "id": "currentSymbol",
+                        "layout|flex": null,
+                        "readOnly": true,
+                        "value": [
+                            "USD",
+                            ""
+                        ],
+                        "width": 685
+                    },
+                    "configAlternates": {
+                        "style": "object",
+                        "fieldLabel": "string",
+                        "id": "string",
+                        "layout|flex": "number",
+                        "readOnly": "boolean",
+                        "height": "auto",
+                        "value": "object",
+                        "width": "auto"
+                    },
+                    "name": "MyTagField",
+                    "designerId": "2fb42fe9-8a58-4aba-932e-f2ee89855685"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 40,
+                        "iconCls": "fa-fw select-all fas",
+                        "id": "refreshBtn",
+                        "layout|flex": null,
+                        "minWidth": 40,
+                        "text": ""
+                    },
+                    "configAlternates": {
+                        "iconCls": "string",
+                        "id": "string",
+                        "layout|flex": "number",
+                        "minWidth": "number",
+                        "text": "string",
+                        "height": "auto"
+                    },
+                    "name": "MyButton1",
+                    "designerId": "057dc1b2-c7cc-43a6-87cf-70da5a8101a1",
+                    "cn": [
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onRefreshBtnClick",
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onRefreshBtnClick",
+                            "designerId": "a619ff65-c35d-48ec-b753-9e440c8022ca"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.panel.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultAlign": "w-w",
+                "flex": 2,
+                "title": ""
+            },
+            "configAlternates": {
+                "defaultAlign": "string",
+                "flex": "number",
+                "title": "string"
+            },
+            "name": "MyPanel1",
+            "designerId": "748f07d8-07bf-4caf-8e5f-5102a882bfdd",
+            "cn": [
+                {
+                    "type": "Ext.grid.Panel",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "left",
+                        "id": "symbolGrid",
+                        "store": "SymbolsStore",
+                        "title": "",
+                        "width": 234
+                    },
+                    "configAlternates": {
+                        "dock": "string",
+                        "id": "string",
+                        "store": "store",
+                        "title": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyGridPanel1",
+                    "designerId": "9d9261ae-7f62-4b60-ad91-b0798572a3ed",
+                    "cn": [
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "value",
+                                "text": "",
+                                "width": "100%"
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyColumn1",
+                            "designerId": "13396db1-abe1-4807-b75a-31745bd32c20"
+                        },
+                        {
+                            "type": "Ext.view.Table",
+                            "reference": {
+                                "name": "viewConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "MyTable1",
+                            "designerId": "85c0cd78-8f06-4a9d-8cdb-e10c6ce35c85"
+                        },
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onSymbolGridRowClick",
+                                "name": "rowclick",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onSymbolGridRowClick",
+                            "designerId": "57859333-f16d-4a5e-9d2e-7dd2e47607a2"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 450,
+                        "id": "rateGrid",
+                        "scrollable": "vertical",
+                        "store": "RatesStore",
+                        "title": ""
+                    },
+                    "configAlternates": {
+                        "height": "auto",
+                        "id": "string",
+                        "scrollable": "auto",
+                        "store": "store",
+                        "title": "string"
+                    },
+                    "name": "MyGridPanel",
+                    "designerId": "f0b31e8c-1491-448f-9706-63db4bce448c",
+                    "cn": [
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "symbol",
+                                "text": "Symbol",
+                                "width": "50%"
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyColumn",
+                            "designerId": "8fda4abd-8973-48c1-a702-1d2bc1adbb75",
+                            "cn": [
+                                {
+                                    "type": "Ext.grid.filters.filter.List",
+                                    "reference": {
+                                        "name": "filter",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "name": "MyListFilter",
+                                    "designerId": "ac75f360-0df8-4281-a143-200fdc3fc220"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.grid.column.Number",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "align": "end",
+                                "dataIndex": "rate",
+                                "text": "Currecy Value",
+                                "width": "50%"
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string",
+                                "width": "auto",
+                                "align": "string"
+                            },
+                            "name": "MyNumberColumn",
+                            "designerId": "a76e792c-2af7-40d5-9e3c-24fe63050d04"
+                        },
+                        {
+                            "type": "Ext.view.Table",
+                            "reference": {
+                                "name": "viewConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "MyTable",
+                            "designerId": "aa4ddf94-a7e3-47a9-97c5-3db80a1a85a8"
+                        },
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onRateGridAfterRender",
+                                "implHandler": [
+                                    "var rateGrid = Ext.ComponentQuery.query('#rateGrid')[0];",
+                                    "var store = rateGrid.getStore();",
+                                    "",
+                                    "store.load({",
+                                    "\tscope:this,",
+                                    "\tcallback: function(records, operation, success) {",
+                                    "\t\tstore.setData(records);",
+                                    "\t}",
+                                    "});",
+                                    "",
+                                    "var symbolGrid = Ext.ComponentQuery.query('#symbolGrid')[0];",
+                                    "var symbolStore = symbolGrid.getStore();",
+                                    "",
+                                    "symbolStore.load({",
+                                    "\tscope:this,",
+                                    "\tcallback: function(records, operation, success) {",
+                                    "\t\tsymbolStore.setData(records);",
+                                    "\t}",
+                                    "});",
+                                    ""
+                                ],
+                                "name": "afterrender",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onRateGridAfterRender",
+                            "designerId": "b773e0be-703b-4199-a718-5e25631d5ae2"
+                        },
+                        {
+                            "type": "Ext.grid.filters.Filters",
+                            "reference": {
+                                "name": "plugins",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "name": "MyGridFiltersPlugin",
+                            "designerId": "aedff944-6451-4cfa-b72b-af638e70be19"
+                        },
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onRateGridRowClick",
+                                "name": "rowclick",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onRateGridRowClick",
+                            "designerId": "d38b95dc-e125-473b-8032-55d76aa7642e"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "E

@@ -1,0 +1,64 @@
+{
+    "name": "ExchangeRates",
+    "settings": {
+        "cmd": {
+            "license": "commercial",
+            "cmdVersion": "7.3.0.19",
+            "frameworkVersion": "7.3.0.55"
+        },
+        "canvasControls": {
+            "viewportSize": {
+                "name": "Auto Expand",
+                "builtIn": true,
+                "height": null,
+                "width": null
+            }
+        },
+        "urlPrefix": "http://localhost:34067/",
+        "exportPath": "",
+        "lockUrlPrefix": true,
+        "buildShouldOverwriteIndex": true,
+        "generateArchitectVersion": true,
+        "spacesToIndent": 4,
+        "lineEnding": "LF",
+        "genTimestamps": false,
+        "cacheBust": false,
+        "installStatus": "Not Installed",
+        "urlPrefixTemplate": "http://localhost:{port}/{path}",
+        "sdkPath": "",
+        "lastBuildSelection": {
+            "value": "webBuild",
+            "display": "Build web app",
+            "buildPlatform": false
+        }
+    },
+    "xdsVersion": "4.2.9",
+    "xdsBuild": 443,
+    "schemaVersion": 1,
+    "upgradeVersion": 310000000001,
+    "framework": "ext73",
+    "viewOrderMap": {
+        "view": [
+            "2ecd2526-8416-43d4-a717-2eb111850243",
+            "e6f9f3e6-438b-4a66-8682-60c7ed51814f",
+            "491ac025-81c2-479a-89de-7885ed13be2e"
+        ],
+        "store": [
+            "031e9f1e-72a2-45ab-bdf0-23d12e4d547a",
+            "2134005f-5f63-49d4-8a8c-24a60b5439c7"
+        ],
+        "controller": [],
+        "model": [
+            "fccca9f6-8f28-4896-995e-309850055fcb",
+            "27a8e91d-0b86-4bc8-871a-898261c3f88f"
+        ],
+        "resource": [
+            "05b0b12d-bd20-41e8-9699-3c1f86f74ad9",
+            "9a78f845-6352-4ac7-b83a-4179296ac504",
+            "69aaa809-d205-4364-989d-098c0f77cfef"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

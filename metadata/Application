@@ -1,0 +1,30 @@
+{
+    "type": "Ext.app.Application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "models": [
+            "SymbolModel",
+            "RateModel"
+        ],
+        "name": "HeaderLeftRight",
+        "stores": [
+            "SymbolsStore",
+            "RatesStore"
+        ],
+        "views": [
+            "MyPanel"
+        ]
+    },
+    "configAlternates": {
+        "name": "string",
+        "views": "typedarray",
+        "models": "typedarray",
+        "stores": "typedarray"
+    },
+    "name": "Application",
+    "designerId": "application"
+}

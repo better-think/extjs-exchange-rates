@@ -1,0 +1,89 @@
+{
+    "type": "jsonpstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "SymbolsStore",
+        "model": "SymbolModel",
+        "storeId": "SymbolsStore"
+    },
+    "configAlternates": {
+        "designer|userClassName": "string",
+        "model": "model",
+        "storeId": "string"
+    },
+    "name": "MyJsonPStore",
+    "designerId": "031e9f1e-72a2-45ab-bdf0-23d12e4d547a",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.JsonP",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "extraParams": [
+                    "{\"access_key\": \"fb6e8c73be27e96f7392a4db33fa5fc5\"}"
+                ],
+                "url": "https://api.exchangeratesapi.io/v1/symbols"
+            },
+            "configAlternates": {
+                "extraParams": "object",
+                "url": "string"
+            },
+            "name": "MyJsonPProxy",
+            "designerId": "aaca8c12-ac48-4771-b894-7402616ffb93",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyJsonReader",
+                    "designerId": "e3b0aa54-fad7-4ef2-a1ca-65fe44a8f32d",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "data"
+                                ],
+                                "fn": "transform",
+                                "implHandler": [
+                                    "var symbols = data.symbols;",
+                                    "",
+                                    "data = Object.keys(symbols).map((symbol) => {",
+                                    "\treturn {",
+                                    "\t\tsymbol: symbol,",
+                                    "\t\tvalue: symbols[symbol]",
+                                    "\t};",
+                                    "});",
+                                    "",
+                                    "return data;"
+                                ]
+                            },
+                            "configAlternates": {
+                                "designer|params": "typedarray",
+                                "fn": "string",
+                                "implHandler": "code"
+                            },
+                            "name": "transform",
+                            "designerId": "fb9245a2-2673-4bed-bb3c-2100adae855f"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
