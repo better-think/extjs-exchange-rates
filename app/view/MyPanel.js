@@ -22,7 +22,7 @@ Ext.define('HeaderLeftRight.view.MyPanel', {
         'HeaderLeftRight.view.MyPanelViewController',
         'Ext.toolbar.Toolbar',
         'Ext.button.Button',
-        'Ext.form.field.Tag',
+        'Ext.form.field.Text',
         'Ext.grid.Panel',
         'Ext.view.Table',
         'Ext.grid.filters.filter.List',
@@ -56,16 +56,23 @@ Ext.define('HeaderLeftRight.view.MyPanel', {
                     height: 40,
                     id: 'menuBtn',
                     minWidth: 40,
-                    text: ''
+                    text: '',
+                    listeners: {
+                        click: 'onMenuBtnClick'
+                    }
                 },
                 {
-                    xtype: 'tagfield',
+                    xtype: 'textfield',
                     height: 60,
-                    id: 'currentSymbol',
+                    id: 'currentSymbolText',
+                    style: {
+                        'font-size': '18px !important'
+                    },
                     width: 685,
                     fieldLabel: '',
-                    value: 'USD',
-                    readOnly: true
+                    value: 'text',
+                    readOnly: true,
+                    editable: false
                 },
                 {
                     xtype: 'button',
@@ -73,7 +80,10 @@ Ext.define('HeaderLeftRight.view.MyPanel', {
                     id: 'refreshBtn',
                     minWidth: 40,
                     iconCls: 'fa-fw select-all fas',
-                    text: ''
+                    text: '',
+                    listeners: {
+                        click: 'onRefreshBtnClick'
+                    }
                 }
             ]
         }
@@ -89,6 +99,8 @@ Ext.define('HeaderLeftRight.view.MyPanel', {
                     xtype: 'gridpanel',
                     dock: 'left',
                     id: 'symbolGrid',
+                    resizable: false,
+                    scrollable: 'vertical',
                     width: 234,
                     title: '',
                     store: 'SymbolsStore',
@@ -99,7 +111,10 @@ Ext.define('HeaderLeftRight.view.MyPanel', {
                             dataIndex: 'value',
                             text: ''
                         }
-                    ]
+                    ],
+                    listeners: {
+                        rowclick: 'onSymbolGridRowClick'
+                    }
                 }
             ],
             items: [
@@ -107,8 +122,11 @@ Ext.define('HeaderLeftRight.view.MyPanel', {
                     xtype: 'gridpanel',
                     height: 450,
                     id: 'rateGrid',
+                    resizable: false,
+                    resizeHandles: 'e',
                     scrollable: 'vertical',
                     title: '',
+                    enableColumnResize: false,
                     store: 'RatesStore',
                     columns: [
                         {
@@ -129,7 +147,8 @@ Ext.define('HeaderLeftRight.view.MyPanel', {
                         }
                     ],
                     listeners: {
-                        afterrender: 'onRateGridAfterRender'
+                        afterrender: 'onRateGridAfterRender',
+                        rowclick: 'onRateGridRowClick'
                     },
                     plugins: [
                         {
@@ -158,7 +177,7 @@ Ext.define('HeaderLeftRight.view.MyPanel', {
                                 'font-size': '40px',
                                 'font-weight': 'bold'
                             },
-                            text: '1 USD = 44.11 UYU'
+                            text: '1 USD = ?'
                         },
                         {
                             xtype: 'tbfill'

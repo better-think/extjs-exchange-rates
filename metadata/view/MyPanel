@@ -85,11 +85,15 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fn": "onMenuBtnClick",
+                                "implHandler": [
+                                    "this.toggleSymbolGrid();"
+                                ],
                                 "name": "click",
                                 "scope": "me"
                             },
                             "configAlternates": {
                                 "fn": "string",
+                                "implHandler": "code",
                                 "name": "string",
                                 "scope": "string"
                             },
@@ -99,36 +103,41 @@
                     ]
                 },
                 {
-                    "type": "Ext.form.field.Tag",
+                    "type": "Ext.form.field.Text",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "editable": false,
                         "fieldLabel": "",
                         "height": 60,
-                        "id": "currentSymbol",
+                        "id": "currentSymbolText",
                         "layout|flex": null,
                         "readOnly": true,
+                        "style": [
+                            "{\"font-size\": \"18px !important\"}"
+                        ],
                         "value": [
-                            "USD",
+                            "text",
                             ""
                         ],
                         "width": 685
                     },
                     "configAlternates": {
                         "style": "object",
+                        "editable": "boolean",
                         "fieldLabel": "string",
+                        "height": "auto",
                         "id": "string",
                         "layout|flex": "number",
                         "readOnly": "boolean",
-                        "height": "auto",
                         "value": "object",
                         "width": "auto"
                     },
-                    "name": "MyTagField",
-                    "designerId": "2fb42fe9-8a58-4aba-932e-f2ee89855685"
+                    "name": "MyTextField",
+                    "designerId": "859cb849-c43b-49e7-956c-6dfbacf0588d"
                 },
                 {
                     "type": "Ext.button.Button",
@@ -165,11 +174,15 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fn": "onRefreshBtnClick",
+                                "implHandler": [
+                                    "this.loadRates();"
+                                ],
                                 "name": "click",
                                 "scope": "me"
                             },
                             "configAlternates": {
                                 "fn": "string",
+                                "implHandler": "code",
                                 "name": "string",
                                 "scope": "string"
                             },
@@ -210,6 +223,8 @@
                     "userConfig": {
                         "dock": "left",
                         "id": "symbolGrid",
+                        "resizable": false,
+                        "scrollable": "vertical",
                         "store": "SymbolsStore",
                         "title": "",
                         "width": 234
@@ -217,6 +232,8 @@
                     "configAlternates": {
                         "dock": "string",
                         "id": "string",
+                        "resizable": "boolean",
+                        "scrollable": "auto",
                         "store": "store",
                         "title": "string",
                         "width": "auto"
@@ -263,11 +280,19 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fn": "onSymbolGridRowClick",
+                                "implHandler": [
+                                    "var base = record.data.symbol;",
+                                    "this.currentSymbol = base;",
+                                    "this.loadRates();",
+                                    "this.setCurrentSymbolText(base);",
+                                    "this.setRatesComapareValue(base, \"?\", \"\");"
+                                ],
                                 "name": "rowclick",
                                 "scope": "me"
                             },
                             "configAlternates": {
                                 "fn": "string",
+                                "implHandler": "code",
                                 "name": "string",
                                 "scope": "string"
                             },
@@ -284,8 +309,11 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "enableColumnResize": false,
                         "height": 450,
                         "id": "rateGrid",
+                        "resizable": false,
+                        "resizeHandles": "e",
                         "scrollable": "vertical",
                         "store": "RatesStore",
                         "title": ""
@@ -295,7 +323,10 @@
                         "id": "string",
                         "scrollable": "auto",
                         "store": "store",
-                        "title": "string"
+                        "title": "string",
+                        "enableColumnResize": "boolean",
+                        "resizable": "boolean",
+                        "resizeHandles": "string"
                     },
                     "name": "MyGridPanel",
                     "designerId": "f0b31e8c-1491-448f-9706-63db4bce448c",
@@ -374,18 +405,14 @@
                             "userConfig": {
                                 "fn": "onRateGridAfterRender",
                                 "implHandler": [
-                                    "var rateGrid = Ext.ComponentQuery.query('#rateGrid')[0];",
-                                    "var store = rateGrid.getStore();",
+                                    "this.rateGrid = Ext.ComponentQuery.query('#rateGrid')[0];",
+                                    "this.symbolGrid = Ext.ComponentQuery.query('#symbolGrid')[0];",
+                                    "this.currentSymbolText = Ext.ComponentQuery.query('#currentSymbolText')[0];",
+                                    "this.resultLbl = Ext.ComponentQuery.query('#resultLbl')[0];",
+                                    "this.isSymbolGridShowed = true;",
+                                    "this.currentSymbol = \"USD\";",
                                     "",
-                                    "store.load({",
-                                    "\tscope:this,",
-                                    "\tcallback: function(records, operation, success) {",
-                                    "\t\tstore.setData(records);",
-                                    "\t}",
-                                    "});",
-                                    "",
-                                    "var symbolGrid = Ext.ComponentQuery.query('#symbolGrid')[0];",
-                                    "var symbolStore = symbolGrid.getStore();",
+                                    "var symbolStore = this.symbolGrid.getStore();",
                                     "",
                                     "symbolStore.load({",
                                     "\tscope:this,",
@@ -393,7 +420,8 @@
                                     "\t\tsymbolStore.setData(records);",
                                     "\t}",
                                     "});",
-                                    ""
+                                    "this.loadRates();",
+                                    "this.setCurrentSymbolText(this.currentSymbol);"
                                 ],
                                 "name": "afterrender",
                                 "scope": "me"
@@ -426,11 +454,15 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fn": "onRateGridRowClick",
+                                "implHandler": [
+                                    "this.setRatesComapareValue(this.currentSymbol, record.data.rate, record.data.symbol);"
+                                ],
                                 "name": "rowclick",
                                 "scope": "me"
                             },
                             "configAlternates": {
                                 "fn": "string",
+                                "implHandler": "code",
                                 "name": "string",
                                 "scope": "string"
                             },
@@ -442,4 +474,100 @@
             ]
         },
         {
-            "type": "E
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": 86
+            },
+            "configAlternates": {
+                "height": "auto",
+                "style": "object"
+            },
+            "name": "MyContainer",
+            "designerId": "343466d0-1a92-49b7-be1c-dc9f267afc67",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "border": "1px solid #000000",
+                        "height": 86
+                    },
+                    "configAlternates": {
+                        "height": "auto",
+                        "style": "object",
+                        "border": "auto"
+                    },
+                    "name": "MyToolbar1",
+                    "designerId": "5a421928-8b99-4d3f-9e09-b0ddd54131c0",
+                    "cn": [
+                        {
+                            "type": "Ext.toolbar.Fill",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null
+                            },
+                            "configAlternates": {
+                                "layout|flex": "number"
+                            },
+                            "name": "MyFill",
+                            "designerId": "964b2a5c-19be-4d6f-b0a2-079b470dbf28"
+                        },
+                        {
+                            "type": "Ext.form.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "id": "resultLbl",
+                                "layout|flex": null,
+                                "style": [
+                                    "{\"font-size\": '40px', \"font-weight\": 'bold'}"
+                                ],
+                                "text": "1 USD = ?"
+                            },
+                            "configAlternates": {
+                                "style": "object",
+                                "id": "string",
+                                "layout|flex": "number",
+                                "text": "string"
+                            },
+                            "name": "MyLabel",
+                            "designerId": "0e61ae26-a97f-4310-9e01-a8c82b931096"
+                        },
+                        {
+                            "type": "Ext.toolbar.Fill",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null
+                            },
+                            "configAlternates": {
+                                "layout|flex": "number"
+                            },
+                            "name": "MyFill1",
+                            "designerId": "51218c8f-712e-4351-b76f-59a746409e86"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

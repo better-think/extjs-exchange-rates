@@ -17,19 +17,64 @@ Ext.define('HeaderLeftRight.view.MyPanelViewController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.mypanel',
 
-    onRateGridAfterRender: function(component, eOpts) {
-        var rateGrid = Ext.ComponentQuery.query('#rateGrid')[0];
-        var store = rateGrid.getStore();
+    setRatesComapareValue: function(baseSymbol, rate, exchangeSymbol) {
+        this.resultLbl.setText(`1 ${baseSymbol} = ${rate} ${exchangeSymbol}`);
+    },
+
+    toggleSymbolGrid: function() {
+        if(this.isSymbolGridShowed) {
+        	this.symbolGrid.hide();
+        	this.isSymbolGridShowed = false;
+        } else {
+        	this.symbolGrid.show();
+        	this.isSymbolGridShowed = true;
+        }
+    },
+
+    loadRates: function() {
+
+        var store = this.rateGrid.getStore();
+
+        store.proxy.extraParams.base = this.currentSymbol;
 
         store.load({
-            scope:this,
-            callback: function(records, operation, success) {
-                store.setData(records);
-            }
+        	scope:this,
+        	callback: function(records, operation, success) {
+        		store.setData(records);
+        	}
         });
 
-        var symbolGrid = Ext.ComponentQuery.query('#symbolGrid')[0];
-        var symbolStore = symbolGrid.getStore();
+    },
+
+    setCurrentSymbolText: function(text) {
+        this.currentSymbolText.setValue(text);
+    },
+
+    onMenuBtnClick: function(button, e, eOpts) {
+        this.toggleSymbolGrid();
+    },
+
+    onRefreshBtnClick: function(button, e, eOpts) {
+        this.loadRates();
+    },
+
+    onSymbolGridRowClick: function(tableview, record, element, rowIndex, e, eOpts) {
+        var base = record.data.symbol;
+        this.currentSymbol = base;
+        this.loadRates();
+        this.setCurrentSymbolText(base);
+        this.setRatesComapareValue(base, "?", "");
+    },
+
+    onRateGridAfterRender: function(component, eOpts) {
+        this.rateGrid = Ext.ComponentQuery.query('#rateGrid')[0];
+        this.symbolGrid = Ext.ComponentQuery.query('#symbolGrid')[0];
+        this.currentSymbolText = Ext.ComponentQuery.query('#currentSymbolText')[0];
+        this.resultLbl = Ext.ComponentQuery.query('#resultLbl')[0];
+        this.isSymbolGridShowed = true;
+        this.currentSymbol = "USD";
+
+        var symbolStore = this.symbolGrid.getStore();
 
         symbolStore.load({
             scope:this,
@@ -37,7 +82,12 @@ Ext.define('HeaderLeftRight.view.MyPanelViewController', {
                 symbolStore.setData(records);
             }
         });
+        this.loadRates();
+        this.setCurrentSymbolText(this.currentSymbol);
+    },
 
+    onRateGridRowClick: function(tableview, record, element, rowIndex, e, eOpts) {
+        this.setRatesComapareValue(this.currentSymbol, record.data.rate, record.data.symbol);
     }
 
 });

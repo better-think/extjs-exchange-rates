@@ -14,3 +14,113 @@
         "designer|userClassName": "string"
     },
     "designerId": "491ac025-81c2-479a-89de-7885ed13be2e",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "baseSymbol",
+                    "rate",
+                    "exchangeSymbol"
+                ],
+                "fn": "setRatesComapareValue",
+                "implHandler": [
+                    "this.resultLbl.setText(`1 ${baseSymbol} = ${rate} ${exchangeSymbol}`);"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "setRatesComapareValue",
+            "designerId": "7f562a36-c4a5-421b-baba-c658c68c90d5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "toggleSymbolGrid",
+                "implHandler": [
+                    "if(this.isSymbolGridShowed) {",
+                    "\tthis.symbolGrid.hide();",
+                    "\tthis.isSymbolGridShowed = false;",
+                    "} else {",
+                    "\tthis.symbolGrid.show();",
+                    "\tthis.isSymbolGridShowed = true;",
+                    "}"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "toggleSymbolGrid",
+            "designerId": "837cba16-6af5-465c-a9de-76520404a573"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "loadRates",
+                "implHandler": [
+                    "",
+                    "var store = this.rateGrid.getStore();",
+                    "",
+                    "store.proxy.extraParams.base = this.currentSymbol;",
+                    "",
+                    "store.load({",
+                    "\tscope:this,",
+                    "\tcallback: function(records, operation, success) {",
+                    "\t\tstore.setData(records);",
+                    "\t}",
+                    "});",
+                    ""
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "loadRates",
+            "designerId": "4b8285c2-a68e-48ad-bf1e-cf32b8bf6420"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "text"
+                ],
+                "fn": "setCurrentSymbolText",
+                "implHandler": [
+                    "this.currentSymbolText.setValue(text);"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "setCurrentSymbolText",
+            "designerId": "7a92bc39-3ef3-413b-b2de-cd39260fd9dc"
+        }
+    ]
+}
